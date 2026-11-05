@@ -53,7 +53,7 @@ export const CanvasTopBar: React.FC<CanvasTopBarProps> = ({
           className="h-full w-full object-contain select-none"
           draggable={false}
         />
-        <h1 className="sr-only">BaseKnot — Petakan Alur Logika UX dari Riset sampai Siap Koding</h1>
+        <h1 className="sr-only">BaseKnot — Tools Mindmapping & Diagram Alur Logika UX dari Riset ke Kode</h1>
       </div>
 
       {/* Center: Lineage Health Meter (Responsive: Tablet & Desktop) */}

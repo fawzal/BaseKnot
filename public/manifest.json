@@ -1,7 +1,7 @@
 {
-  "name": "BaseKnot — Petakan Logika UX dari Riset ke Kode",
+  "name": "BaseKnot — Tools Mindmapping & Diagram Alur Logika UX",
   "short_name": "BaseKnot",
-  "description": "Petakan alur logika UX dari temuan riset sampai token desain UI secara visual dan siap ekspor ke AI.",
+  "description": "Tools mindmapping dan diagram alur logika UX untuk product analisis dan system analisis. Hubungkan riset, sitemap, dan token UI ke drawer prompt AI.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAFAFA",

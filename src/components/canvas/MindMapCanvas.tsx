@@ -321,10 +321,10 @@ export const MindMapCanvas: React.FC<MindMapCanvasProps> = ({
               <Sparkles className="h-5 w-5 text-zinc-700" />
             </div>
             <h3 className="text-sm font-semibold text-zinc-900 mb-1">
-              Kanvas BaseKnot Siap Digunakan
+              Kanvas Mindmapping BaseKnot Siap Digunakan
             </h3>
             <p className="text-xs text-zinc-500 leading-relaxed mb-5">
-              Yuk mulai! Sambungkan insight riset pengguna pertamamu ke fitur dan komponen UI sampai jadi silsilah logika yang utuh.
+              Mulai product analisis Anda: buat diagram userflow dari temuan riset, sambungkan ke sitemap dan token UI, lalu ekspor prompt AI lewat drawer.
             </p>
             <div className="flex items-center justify-center">
               <button

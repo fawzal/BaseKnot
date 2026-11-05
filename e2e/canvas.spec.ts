@@ -89,7 +89,7 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
     await expect(page.getByTitle(/Tambah Token UI/i)).toBeVisible();
 
     // Verify empty state card is displayed and 0 nodes exist by default
-    await expect(page.getByText('Kanvas BaseKnot Siap Digunakan')).toBeVisible();
+    await expect(page.getByText(/Kanvas.*BaseKnot.*Siap Digunakan/i)).toBeVisible();
     await expect(page.getByRole('button', { name: /Tanamkan Riset Pertama/i })).toBeVisible();
     const nodeCount = await page.locator('.react-flow__node').count();
     expect(nodeCount).toBe(0);
