@@ -7,69 +7,10 @@ const STORAGE_KEYS = {
   TOKENS: 'uxt_tokens',
 };
 
-const INITIAL_RESEARCH: UXResearch[] = [
-  {
-    id: 'res-1',
-    insight_text: 'Pengguna sering bingung mengapa aksi bulk-delete tidak bisa di-undo saat memproses 50+ item sekaligus.',
-    created_at: new Date(Date.now() - 86400000 * 2).toISOString(),
-  },
-  {
-    id: 'res-2',
-    insight_text: 'Stakeholder mempertanyakan penempatan floating quick-filter di atas table yang menutupi row header di mobile viewport.',
-    created_at: new Date(Date.now() - 86400000).toISOString(),
-  },
-];
-
-const INITIAL_FEATURES: UXFeature[] = [
-  {
-    id: 'feat-1',
-    feature_name: 'Soft-Delete Staging Drawer & 30-Sec Toast Undo',
-    description: 'Menyediakan buffer konfirmasi non-blocking dan undo toast sebelum permanent mutation.',
-    research_id: 'res-1',
-    created_at: new Date(Date.now() - 86400000 * 2).toISOString(),
-  },
-  {
-    id: 'feat-2',
-    feature_name: 'Responsive Filter Drawer & Sticky Filter Pills',
-    description: 'Quick-filter dipindahkan menjadi filter chips horizontal yang collapse ke drawer di mobile.',
-    research_id: 'res-2',
-    created_at: new Date(Date.now() - 86400000).toISOString(),
-  },
-];
-
-const INITIAL_SITEMAP: UXSitemap[] = [
-  {
-    id: 'site-1',
-    page_name: 'Batch Operations Panel',
-    hierarchy_level: 'Modal/Drawer',
-    feature_id: 'feat-1',
-    created_at: new Date(Date.now() - 86400000 * 2).toISOString(),
-  },
-  {
-    id: 'site-2',
-    page_name: 'Workspace Table View',
-    hierarchy_level: 'Main Content',
-    feature_id: 'feat-2',
-    created_at: new Date(Date.now() - 86400000).toISOString(),
-  },
-];
-
-const INITIAL_TOKENS: UXUIToken[] = [
-  {
-    id: 'tok-1',
-    component_type: 'Toast / Notification Pill',
-    design_token: 'bg-surface-elevated text-amber-400 border-amber-500/30 font-mono shadow-glow-sm',
-    sitemap_id: 'site-1',
-    created_at: new Date(Date.now() - 86400000 * 2).toISOString(),
-  },
-  {
-    id: 'tok-2',
-    component_type: 'Filter Chip Group',
-    design_token: 'bg-surface border-border hover:border-accent text-foreground-muted rounded-full px-3 py-1 text-xs',
-    sitemap_id: 'site-2',
-    created_at: new Date(Date.now() - 86400000).toISOString(),
-  },
-];
+const INITIAL_RESEARCH: UXResearch[] = [];
+const INITIAL_FEATURES: UXFeature[] = [];
+const INITIAL_SITEMAP: UXSitemap[] = [];
+const INITIAL_TOKENS: UXUIToken[] = [];
 
 class MockStore {
   private get<T>(key: string, defaultVal: T[]): T[] {

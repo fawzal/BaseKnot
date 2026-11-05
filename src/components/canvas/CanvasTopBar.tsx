@@ -118,7 +118,7 @@ export const CanvasTopBar: React.FC<CanvasTopBarProps> = ({
           variant="outline"
           size="icon"
           className="h-8 w-8 sm:h-9 sm:w-9 bg-white hover:bg-zinc-50 text-zinc-600 hover:text-zinc-900 border-zinc-200 shadow-sm"
-          title="Muat Ulang Sampel Data"
+          title="Segarkan Data Kanvas"
         >
           <RotateCcw className="h-3.5 w-3.5" />
         </Button>

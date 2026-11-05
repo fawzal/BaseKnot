@@ -1,13 +1,79 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
+
+/**
+ * Helper to seed a valid 4-tier relational chain for tests that verify
+ * node selection, lineage focus, edge disconnection, and cascade deletion.
+ */
+async function seedTestNodes(page: Page) {
+  await page.evaluate(() => {
+    localStorage.setItem(
+      'uxt_research',
+      JSON.stringify([
+        {
+          id: 'e2e-node-r1',
+          insight_text: 'Pengguna mengeluhkan checkout lambat pada perangkat seluler.',
+          created_at: new Date().toISOString(),
+        },
+      ])
+    );
+    localStorage.setItem(
+      'uxt_features',
+      JSON.stringify([
+        {
+          id: 'e2e-node-f1',
+          feature_name: 'Bilah Checkout Melayang',
+          description: 'Aksi checkout persisten di viewport bawah.',
+          research_id: 'e2e-node-r1',
+          created_at: new Date().toISOString(),
+        },
+        {
+          id: 'e2e-node-f2',
+          feature_name: 'Ringkasan Keranjang Minimalis',
+          description: 'Menghilangkan gangguan banner promosi.',
+          research_id: 'e2e-node-r1',
+          created_at: new Date().toISOString(),
+        },
+      ])
+    );
+    localStorage.setItem(
+      'uxt_sitemap',
+      JSON.stringify([
+        {
+          id: 'e2e-node-s1',
+          page_name: 'Halaman Checkout',
+          hierarchy_level: 'floating',
+          feature_id: 'e2e-node-f1',
+          created_at: new Date().toISOString(),
+        },
+      ])
+    );
+    localStorage.setItem(
+      'uxt_tokens',
+      JSON.stringify([
+        {
+          id: 'e2e-node-t1',
+          component_type: 'StickyBottomBar',
+          design_token: 'bg-black text-white px-4 py-2',
+          sitemap_id: 'e2e-node-s1',
+          created_at: new Date().toISOString(),
+        },
+      ])
+    );
+  });
+  await page.reload();
+  await expect(page.locator('.react-flow__node').first()).toBeVisible({ timeout: 10_000 });
+}
 
 test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesia)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    // Wait for the React Flow canvas to mount
+    // Clear localStorage to ensure tests start with clean empty state by default
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
     await expect(page.locator('.react-flow')).toBeVisible({ timeout: 10_000 });
   });
 
-  test('1. App loads full-screen MindMap Canvas with branding and controls', async ({ page }) => {
+  test('1. App loads full-screen MindMap Canvas in empty state with branding and controls', async ({ page }) => {
     // Check page title
     await expect(page).toHaveTitle(/UX Logic Thread/i);
 
@@ -22,11 +88,11 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
     await expect(page.getByTitle(/Tambah Layar Sitemap/i)).toBeVisible();
     await expect(page.getByTitle(/Tambah Token UI/i)).toBeVisible();
 
-    // Verify initial seed nodes rendered on the canvas
-    const flowNodes = page.locator('.react-flow__node');
-    await expect(flowNodes.first()).toBeVisible();
-    const count = await flowNodes.count();
-    expect(count).toBeGreaterThanOrEqual(4);
+    // Verify empty state card is displayed and 0 nodes exist by default
+    await expect(page.getByText('Kanvas Logika Siap Digunakan')).toBeVisible();
+    await expect(page.getByRole('button', { name: /Tanamkan Riset Pertama/i })).toBeVisible();
+    const nodeCount = await page.locator('.react-flow__node').count();
+    expect(nodeCount).toBe(0);
   });
 
   test('2. Cursor tool mode switches between Select (V) and Hand (H)', async ({ page }) => {
@@ -51,6 +117,8 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
   });
 
   test('3. Dependency Lineage Focus Mode activates on node click and clears on Esc', async ({ page }) => {
+    await seedTestNodes(page);
+
     const firstNode = page.locator('.react-flow__node').first();
     await expect(firstNode).toBeVisible();
 
@@ -92,6 +160,8 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
   });
 
   test('5. Edit node modal triggers on double-click', async ({ page }) => {
+    await seedTestNodes(page);
+
     const firstNode = page.locator('.react-flow__node').first();
     await expect(firstNode).toBeVisible();
 
@@ -134,6 +204,8 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
   });
 
   test('7. Edge selection and disconnection via [Lepas Hubungan] button and keyboard Delete', async ({ page }) => {
+    await seedTestNodes(page);
+
     // Verify initial edges exist
     const edges = page.locator('.react-flow__edge');
     await expect(edges.first()).toBeVisible({ timeout: 5_000 });
@@ -212,8 +284,10 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
   });
 
   test('9. Cascade Deletion Confirmation Dialog shows breakdown and protects children (EC-6)', async ({ page }) => {
+    await seedTestNodes(page);
+
     // Locate the first research node
-    const researchNode = page.locator('.react-flow__node').first();
+    const researchNode = page.locator('.react-flow__node', { hasText: 'Pengguna mengeluhkan checkout' });
     await expect(researchNode).toBeVisible();
 
     // Hover over node to reveal trash button

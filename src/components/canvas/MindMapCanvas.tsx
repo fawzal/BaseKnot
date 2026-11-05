@@ -8,7 +8,7 @@ import {
   SelectionMode,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { Trash2, Scissors, Plus, RotateCcw, Sparkles } from 'lucide-react';
+import { Trash2, Scissors, Plus, Sparkles } from 'lucide-react';
 
 import { CanvasTopBar } from './CanvasTopBar';
 import { CanvasBottomDock } from './CanvasBottomDock';
@@ -316,34 +316,23 @@ export const MindMapCanvas: React.FC<MindMapCanvasProps> = ({
       {/* Empty Canvas Guidance: Minimal dashed watermark card */}
       {nodes.length === 0 && (
         <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none p-4">
-          <div className="max-w-md w-full bg-white/95 backdrop-blur-md border-2 border-dashed border-zinc-300 rounded-2xl p-6 text-center pointer-events-auto shadow-panel animate-in fade-in zoom-in-95 duration-200">
+          <div className="max-w-md w-full bg-white/95 backdrop-blur-md border border-zinc-200 rounded-2xl p-6 text-center pointer-events-auto shadow-panel animate-in fade-in zoom-in-95 duration-200">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800 mb-3 border border-zinc-200 shadow-2xs">
               <Sparkles className="h-5 w-5 text-zinc-700" />
             </div>
             <h3 className="text-sm font-semibold text-zinc-900 mb-1">
-              Kanvas Logika Masih Kosong
+              Kanvas Logika Siap Digunakan
             </h3>
             <p className="text-xs text-zinc-500 leading-relaxed mb-5">
-              Mulai arsitektur Anda dengan meletakkan insight riset pertama, atau muat sampel data untuk melihat relasi hulu-ke-hilir lengkap.
+              Mulai arsitektur UX Anda dengan meletakkan insight riset pengguna hulu untuk membangun silsilah logika produk.
             </p>
-            <div className="flex items-center justify-center gap-2.5">
+            <div className="flex items-center justify-center">
               <button
                 onClick={() => handleOpenAddModal('research')}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg text-xs font-medium shadow-sm active:scale-[0.98] transition-all"
+                className="flex items-center gap-1.5 px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg text-xs font-medium shadow-sm active:scale-[0.98] transition-all"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Tanamkan Riset Pertama</span>
-              </button>
-              <button
-                onClick={() => {
-                  clearSavedPositions();
-                  clearFocus();
-                  onResetDefaults();
-                }}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 bg-white hover:bg-zinc-50 text-zinc-700 hover:text-zinc-900 border border-zinc-200 rounded-lg text-xs font-medium shadow-sm active:scale-[0.98] transition-all"
-              >
-                <RotateCcw className="h-3.5 w-3.5 text-zinc-500" />
-                <span>Muat Sampel</span>
               </button>
             </div>
           </div>
