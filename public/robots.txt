@@ -1,0 +1,8 @@
+# ==============================================================================
+# UX Logic Thread - Search Engine Crawler Directive
+# ==============================================================================
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: /sitemap.xml

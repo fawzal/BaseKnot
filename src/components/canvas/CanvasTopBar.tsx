@@ -53,6 +53,7 @@ export const CanvasTopBar: React.FC<CanvasTopBarProps> = ({
           className="h-full w-full object-contain select-none"
           draggable={false}
         />
+        <h1 className="sr-only">UX Logic Thread — Peta Keterlacakan Logika UX dari Riset ke Kode UI</h1>
       </div>
 
       {/* Center: Lineage Health Meter (Responsive: Tablet & Desktop) */}
