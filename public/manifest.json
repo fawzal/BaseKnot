@@ -1,7 +1,7 @@
 {
-  "name": "UX Logic Thread — Visual Traceability Canvas",
-  "short_name": "UX Thread",
-  "description": "Visual Traceability Canvas from User Research Insights to UI Components and AI Prompts",
+  "name": "BaseKnot — Petakan Logika UX dari Riset ke Kode",
+  "short_name": "BaseKnot",
+  "description": "Petakan alur logika UX dari temuan riset sampai token desain UI secara visual dan siap ekspor ke AI.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAFAFA",

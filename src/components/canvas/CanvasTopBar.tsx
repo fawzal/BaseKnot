@@ -45,15 +45,15 @@ export const CanvasTopBar: React.FC<CanvasTopBarProps> = ({
       {/* Left: Branding Logo Only */}
       <div
         className="flex items-center justify-center bg-white/95 backdrop-blur-md border border-zinc-200 h-9 w-9 sm:h-10 sm:w-10 rounded-xl shadow-panel pointer-events-auto p-1 sm:p-1.5 hover:border-zinc-300 transition-colors shrink-0"
-        title="UX Logic Thread"
+        title="BaseKnot"
       >
         <img
           src={logoImg}
-          alt="UX Logic Thread"
+          alt="BaseKnot"
           className="h-full w-full object-contain select-none"
           draggable={false}
         />
-        <h1 className="sr-only">UX Logic Thread — Peta Keterlacakan Logika UX dari Riset ke Kode UI</h1>
+        <h1 className="sr-only">BaseKnot — Petakan Alur Logika UX dari Riset sampai Siap Koding</h1>
       </div>
 
       {/* Center: Lineage Health Meter (Responsive: Tablet & Desktop) */}

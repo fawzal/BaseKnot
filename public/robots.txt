@@ -1,5 +1,5 @@
 # ==============================================================================
-# UX Logic Thread - Search Engine Crawler Directive
+# BaseKnot - Search Engine Crawler Directive
 # ==============================================================================
 User-agent: *
 Allow: /

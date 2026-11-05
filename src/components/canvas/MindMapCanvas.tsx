@@ -321,10 +321,10 @@ export const MindMapCanvas: React.FC<MindMapCanvasProps> = ({
               <Sparkles className="h-5 w-5 text-zinc-700" />
             </div>
             <h3 className="text-sm font-semibold text-zinc-900 mb-1">
-              Kanvas Logika Siap Digunakan
+              Kanvas BaseKnot Siap Digunakan
             </h3>
             <p className="text-xs text-zinc-500 leading-relaxed mb-5">
-              Mulai arsitektur UX Anda dengan meletakkan insight riset pengguna hulu untuk membangun silsilah logika produk.
+              Yuk mulai! Sambungkan insight riset pengguna pertamamu ke fitur dan komponen UI sampai jadi silsilah logika yang utuh.
             </p>
             <div className="flex items-center justify-center">
               <button

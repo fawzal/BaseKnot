@@ -75,10 +75,10 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
 
   test('1. App loads full-screen MindMap Canvas in empty state with branding and controls', async ({ page }) => {
     // Check page title
-    await expect(page).toHaveTitle(/UX Logic Thread/i);
+    await expect(page).toHaveTitle(/BaseKnot/i);
 
     // Check Top Bar branding logo
-    await expect(page.getByAltText(/UX Logic Thread/i)).toBeVisible();
+    await expect(page.getByAltText(/BaseKnot/i)).toBeVisible();
 
     // Check Bottom Dock tools (Indonesian copy)
     await expect(page.getByTitle(/Alat Pilih/i)).toBeVisible();
@@ -89,7 +89,7 @@ test.describe('UX Logic Thread — Interactive Canvas E2E Suite (Bahasa Indonesi
     await expect(page.getByTitle(/Tambah Token UI/i)).toBeVisible();
 
     // Verify empty state card is displayed and 0 nodes exist by default
-    await expect(page.getByText('Kanvas Logika Siap Digunakan')).toBeVisible();
+    await expect(page.getByText('Kanvas BaseKnot Siap Digunakan')).toBeVisible();
     await expect(page.getByRole('button', { name: /Tanamkan Riset Pertama/i })).toBeVisible();
     const nodeCount = await page.locator('.react-flow__node').count();
     expect(nodeCount).toBe(0);
